@@ -11,6 +11,8 @@ app.use(methodOverride('_method'))
 const route = require('./routes')
 const db = require('./config/db')
 
+const SortMiddleware = require('./app/middlewares/SortMiddleware')
+
 // Connect to DB
 db.connect()
 
@@ -22,6 +24,9 @@ app.use(
 
 app.use(express.json())
 
+// Custom middleware
+app.use(SortMiddleware)
+
 // HTTP logger
 // app.use(morgan('combined'))
 
@@ -32,6 +37,26 @@ app.engine(
         extname: '.hbs',
         helpers: {
             sum: (a, b) => a + b,
+            sortable: (field, sort) => {
+                const sortType = field === sort.column ? sort.type : 'default'
+
+                const icons = {
+                    default: 'fa-solid fa-sort',
+                    desc: 'fa-solid fa-arrow-down-short-wide',
+                    asc: 'fa-solid fa-arrow-down-wide-short',
+                }
+
+                const types = {
+                    default: 'desc',
+                    desc: 'asc',
+                    asc: 'desc',
+                }
+
+                const icon = icons[sortType]
+                const type = types[sortType]
+
+                return `<a href="?_sort&column=${field}&type=${type}"><i class="${icon}"></i></a>`
+            },
         },
     }),
 )

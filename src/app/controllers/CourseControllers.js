@@ -34,7 +34,7 @@ class CourseControllers {
         course
             .save()
             .then(() => res.redirect('/me/stored/courses'))
-            .catch((error) => {})
+            .catch(next)
     }
 
     // [PUT] /courses/:id
@@ -91,11 +91,11 @@ class CourseControllers {
                     .catch(next)
                 break
             case 'deleteForce':
-                // Course.deleteOne({ _id : {$in : req.body.courseIds}})
-                //     .then(() => {
-                //         res.redirect('back')
-                //     })
-                //     .catch(next)
+                Course.deleteMany({ _id: { $in: req.body.courseIds } })
+                    .then(() => {
+                        res.redirect('back')
+                    })
+                    .catch(next)
                 break
             default:
                 res.json({ message: 'Action is  invalid!' })
