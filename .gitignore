@@ -1,3 +1,6 @@
 .vscode
 node_modules/
-src/public/css 
+src/public/css  
+npm-debug.log
+.DS_Store
+/*.env
