@@ -1,287 +1,318 @@
-<!-- 
-<div class="mt-3">
-    <div class="row"> 
-        <div class="col-3">
-            <div class="news">activity</div>
-        </div>
-        <div class="col-sm-6 col-lg-6 mb-2">
-        <div class="form-floating mt-3 mb-3">
-            <input type="text" class="form-control" id="name" data-bs-toggle="modal" data-bs-target="#exampleModal"> 
-            <label for="name">Bạn muốn viết gì!!</label>
-        </div>  
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5 text-center flex-fill" id="exampleModalLabel">Create post</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form method="POST" action="/post/store" enctype="multipart/form-data">    
-                        <div class="form-floating mt-3">
-                            <textarea class="form-control" placeholder="Leave a comment here" id="description" autofocus="true" name="description" style="height: 100px"></textarea>
-                            <label for="description">Bạn muốn viết gì!!</label>
-                        </div>   
-                        <div>
-                            <label for="image">Upload Image</label>
-                            <input type="file" id="image" name="image" value="" required>
-                        </div>
-                        <button type="submit" id="modal-submit-btn" class="mt-4 btn btn-primary w-100 ">Thêm bài viết</button>  
-                    </form>  
-                </div> 
-                </div>
-            </div>
-        </div> 
-        {{#each posts}}
-            <div class="card mb-3">
-                <div class="card-header">
-                    <div class="card-header-user row align-items-center"> 
-                        <a href="#" class="header-user-link col-3">
-                            <img class="header-user-image" src="https://changevn.org/wp-content/uploads/2021/03/logo.png" alt="#">
-                        </a>
-                        <div class="header-user-information col-9 d-flex flex-column p-0">
-                            <div>
-                                <a class="d-inline header-user-name text-dark"  href="">
-                                    <span class="m-0"><b>{{this.name}}</b></span>
-                                </a> 
-                            </div>
-                            <div>
-                                <a class="d-inline  header-user-time text- " href="">
-                                    <span class="m-0 "></span> 
-                                </a> 
-                            </div>
-                        </div> 
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="body-title mb-2">
-                        <div class="header-title-text">
-                            <b>Nhân Nhựa</b>
-                        </div>
-                    </div>
-                    <div class="card-body-content">
-                        <div class="body-post">
-                            <div class="body-post-text">
-                                {{ this.description }}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="body-post-main-wrapp-img">
-                    <img class="body-post-main-img" src="data:{{this.image.contentType}};base64,{{this.image.data}}">
-                </div>
-                <div class="card-footer row align-items-center m-0">
-                    <div class="footer-react col-1">
-                        <a href="" class="footer-react-icon prevent-behavior">
-                            <i class="fa-regular fa-heart"></i>
-                        </a>
-                    </div>
-                    <div class="footer-share col-1">
-                        <a href="" class="footer-share-icon prevent-behavior">
-                            <i class="fa-regular fa-share-from-square"></i>
-                        </a>
-                    </div>
-                    <form method="POST" action="/" class="footer-comment d-flex p-0 col">
-                        <div class="flex-fill d-flex align-items-center">
-                            <label style="cursor: pointer; padding-left:12px" class="h-100 d-flex align-items-center" for="comment-inp"><i class="fa-solid fa-magnifying-glass "></i></label>
-                            <input  type="text" name="comment-input" id="comment-inp" class="footer-comment-input">
-                        </div>
-                        <button type="submit" class="btn"><i class="fa-solid fa-paper-plane pe-1"></i></button>
-                    </form>
-                </div>
-            </div>
-        {{/each}}
-        </div>
-        <div class="col-3">
-            <div class="community">
-                community
-            </div>
-        </div>
-
-    </div>
-</div>
-
-<script>
-    document.addEventListener('DOMContentLoaded',() => {   
-        const textPost = $('#description')
-        const submitBtn = $('#modal-submit-btn')
-        if (textPost.val() == false) {
-            submitBtn.addClass('disabled')
-        }
-        textPost.bind('input propertychange',function() { 
-            if ($(this).val() == false) {
-                submitBtn.addClass('disabled')
-            } else {
-                submitBtn.removeClass('disabled') 
-            }
-
-        })
-    })
-</script>   -->
-
 <!DOCTYPE html>
 <html lang="en">
-  
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Image Uploading</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="/css/app.css">
-</head> 
-<body>   
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="/css/app.css" />
+  </head>
+  <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-        <div class="container">
-          <a class="navbar-brand" href="/">HowT Green</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mb-2 mb-lg-0 ms-auto "> 
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  <img class="user-avatar" src="https://scontent.fsgn5-10.fna.fbcdn.net/v/t39.30808-6/314593655_1173633703255724_7914186868620165292_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=hXqmp0NYeHQAX9qQDKT&tn=W_a8ura0iM2ftaYK&_nc_ht=scontent.fsgn5-10.fna&oh=00_AfB1-F8lmO2EA8Pc5ChbG7fZRanO_ll5aefM0KJNa7mIhw&oe=63754585" alt="">
-                  HungTS
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="/user/setting">Tài khoản</a></li>  
-                  <li><hr class="dropdown-divider"></li> 
-                  <li><a class="dropdown-item" href="/post/create">Đăng bài viết</a></li>  
-                  <li><a class="dropdown-item" href="/me/stored/posts">Bài viết của tôi</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item text-danger" href="#">Đăng xuất</a></li>
-                </ul>
-              </li> 
-            </ul> 
+      <div class="container">
+        <a class="navbar-brand" href="/">HowT Green</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mb-2 mb-lg-0 ms-auto">
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <img
+                  class="user-avatar"
+                  src="img/img.jpg"
+                  alt=""
+                />
+                User
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="/user/setting">Tài khoản</a>
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item" href="/post/create">Đăng bài viết</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/me/stored/posts"
+                    >Bài viết của tôi</a
+                  >
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item text-danger" href="#">Đăng xuất</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="mt-3">
+        <div class="row">
+          <div class="col-3">
+            <div class="news">
+              <div class="news-title">activity</div>
+              <div class="news-sm-box">
+                <div class="news-sm-box-heading">Nuclear Plant explosion in Japan</div>
+                <div class="news-sm-box-about">On April 13th in Japan...</div>
+              </div>
+              <div class="news-sm-box">
+                <div class="news-sm-box-heading">Nuclear Plant explosion in Japan</div>
+                <div class="news-sm-box-about">On April 13th in Japan...</div>
+              </div>
+              <div class="news-more">
+                <div class="news-more-text">Xem Them</div>
+                <div class="news-more-wrapp-icon">
+                    <i class="fa-solid fa-arrow-down"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-6 mb-2">
+            <div class="form-floating mt-3 mb-3">
+              <input
+                type="text"
+                class="form-control"
+                id="name"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal"
+              />
+              <label for="name">Bạn muốn viết gì!!</label>
+            </div>
+            <div
+              class="modal fade"
+              id="exampleModal"
+              tabindex="-1"
+              aria-labelledby="exampleModalLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1
+                      class="modal-title fs-5 text-center flex-fill"
+                      id="exampleModalLabel"
+                    >
+                      Create post
+                    </h1>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div class="modal-body">
+                    <form
+                      method="POST"
+                      action="/post/store"
+                      enctype="multipart/form-data"
+                    >
+                      <div class="form-floating mt-3">
+                        <textarea
+                          class="form-control"
+                          placeholder="Leave a comment here"
+                          id="description"
+                          autofocus="true"
+                          name="description"
+                          style="height: 100px"
+                        ></textarea>
+                        <label for="description">Bạn muốn viết gì!!</label>
+                      </div>
+                      <div>
+                        <label for="image">Upload Image</label>
+                        <input
+                          type="file"
+                          id="image"
+                          name="image"
+                          value=""
+                          required
+                        />
+                      </div>
+                      <button
+                        type="submit"
+                        id="modal-submit-btn"
+                        class="mt-4 btn btn-primary w-100"
+                      >
+                        Thêm bài viết
+                      </button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <% items.forEach(function(image) { %>
+            <div class="card mb-3">
+              <div class="card-header">
+                <div class="card-header-user row align-items-center">
+                  <a href="#" class="header-user-link col-3">
+                    <img
+                      class="header-user-image"
+                      src="https://changevn.org/wp-content/uploads/2021/03/logo.png"
+                      alt="#"
+                    />
+                  </a>
+                  <div
+                    class="header-user-information col-9 d-flex flex-column p-0"
+                  >
+                    <div>
+                      <a class="d-inline header-user-name text-dark" href="">
+                        <span class="m-0"><b> <%= image.name %></b></span>
+                      </a>
+                    </div>
+                    <div>
+                      <a class="d-inline header-user-time text-" href="">
+                        <span class="m-0"></span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="body-title mb-2">
+                  <div class="header-title-text">
+                    <b>Nhân Nhựa</b>
+                  </div>
+                </div>
+                <div class="card-body-content">
+                  <div class="body-post">
+                    <div class="body-post-text"><%= image.description %></div>
+                  </div>
+                </div>
+              </div>
+              <div class="body-post-main-wrapp-img">
+                <img
+                  class="body-post-main-img"
+                  src="data:image/<%=image.image.contentType%>;base64,
+                        <%=image.image.data.toString('base64')%>"
+                />
+              </div>
+              <div class="card-footer row align-items-center m-0">
+                <div class="footer-react col-1">
+                  <a href="" class="footer-react-icon prevent-behavior">
+                    <i class="fa-regular fa-heart"></i>
+                  </a>
+                </div>
+                <div class="footer-share col-1">
+                  <a href="" class="footer-share-icon prevent-behavior">
+                    <i class="fa-regular fa-share-from-square"></i>
+                  </a>
+                </div>
+                <form
+                  method="POST"
+                  action="/"
+                  class="footer-comment d-flex p-0 col"
+                >
+                  <div class="flex-fill d-flex align-items-center">
+                    <label
+                      style="cursor: pointer; padding-left: 12px"
+                      class="h-100 d-flex align-items-center"
+                      for="comment-inp"
+                      ><i class="fa-solid fa-magnifying-glass"></i
+                    ></label>
+                    <input
+                      type="text"
+                      name="comment-input"
+                      id="comment-inp"
+                      class="footer-comment-input"
+                    />
+                  </div>
+                  <button type="submit" class="btn">
+                    <i class="fa-solid fa-paper-plane pe-1"></i>
+                  </button>
+                </form>
+              </div>
+            </div>
+            <% }) %>
+          </div>
+          <div class="col-3">
+            <div class="community">
+              <div class="community-title">community</div>
+              <div class="community-sm-box">
+                <div class="community-sm-box-wrapped-img">
+                    <img class="community-sm-box-img" src="https://scontent.xx.fbcdn.net/v/t1.15752-9/315244734_1333698904111671_2181237699136638258_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=aee45a&_nc_ohc=304YcDJlhCoAX-4o_rm&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AdToqKk1QWH9nkiEPLvhIx6GeI7Te5Vg_u0e8w4nufbH9g&oe=63A9E75A" alt="1" ></img>
+                </div>
+                <div class="community-sm-box-text">Lets plant green</div>
+              </div>
+
+              <div class="community-sm-box">
+                <div class="community-sm-box-wrapped-img">
+                    <img class="community-sm-box-img" src="https://scontent.xx.fbcdn.net/v/t1.15752-9/315244734_1333698904111671_2181237699136638258_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=aee45a&_nc_ohc=304YcDJlhCoAX-4o_rm&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AdToqKk1QWH9nkiEPLvhIx6GeI7Te5Vg_u0e8w4nufbH9g&oe=63A9E75A" alt="1" ></img>
+                </div>
+                <div class="community-sm-box-text">Lets plant green</div>
+              </div>
+              <div class="community-sm-box">
+                <div class="community-sm-box-wrapped-img">
+                    <img class="community-sm-box-img" src="https://scontent.xx.fbcdn.net/v/t1.15752-9/315244734_1333698904111671_2181237699136638258_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=aee45a&_nc_ohc=304YcDJlhCoAX-4o_rm&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AdToqKk1QWH9nkiEPLvhIx6GeI7Te5Vg_u0e8w4nufbH9g&oe=63A9E75A" alt="1" ></img>
+                </div>
+                <div class="community-sm-box-text">Lets plant green</div>
+              </div>
+              <div class="community-sm-box">
+                <div class="community-sm-box-wrapped-img">
+                    <img class="community-sm-box-img" src="https://scontent.xx.fbcdn.net/v/t1.15752-9/315244734_1333698904111671_2181237699136638258_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=aee45a&_nc_ohc=304YcDJlhCoAX-4o_rm&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AdToqKk1QWH9nkiEPLvhIx6GeI7Te5Vg_u0e8w4nufbH9g&oe=63A9E75A" alt="1" ></img>
+                </div>
+                <div class="community-sm-box-text">Lets plant green</div>
+              </div>
+
+            </div>
           </div>
         </div>
-      </nav>
-      <div class="container">
-        <div class="mt-3">
-            <div class="row"> 
-                <div class="col-3">
-                    <div class="news">activity</div>
-                </div>
-                <div class="col-sm-6 col-lg-6 mb-2">
-                <div class="form-floating mt-3 mb-3">
-                    <input type="text" class="form-control" id="name" data-bs-toggle="modal" data-bs-target="#exampleModal"> 
-                    <label for="name">Bạn muốn viết gì!!</label>
-                </div>  
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5 text-center flex-fill" id="exampleModalLabel">Create post</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form method="POST" action="/post/store" enctype="multipart/form-data">    
-                                <div class="form-floating mt-3">
-                                    <textarea class="form-control" placeholder="Leave a comment here" id="description" autofocus="true" name="description" style="height: 100px"></textarea>
-                                    <label for="description">Bạn muốn viết gì!!</label>
-                                </div>   
-                                <div>
-                                    <label for="image">Upload Image</label>
-                                    <input type="file" id="image" name="image" value="" required>
-                                </div>
-                                <button type="submit" id="modal-submit-btn" class="mt-4 btn btn-primary w-100 ">Thêm bài viết</button>  
-                            </form>  
-                        </div> 
-                        </div>
-                    </div>
-                </div> 
-                <% items.forEach(function(image) { %>
-                <div class="card mb-3">
-                    <div class="card-header">
-                        <div class="card-header-user row align-items-center"> 
-                            <a href="#" class="header-user-link col-3">
-                                <img class="header-user-image" src="https://changevn.org/wp-content/uploads/2021/03/logo.png" alt="#">
-                            </a>
-                            <div class="header-user-information col-9 d-flex flex-column p-0">
-                                <div>
-                                    <a class="d-inline header-user-name text-dark"  href="">
-                                        <span class="m-0"><b>
-                                            <%= image.name %></b></span>
-                                    </a> 
-                                </div>
-                                <div>
-                                    <a class="d-inline  header-user-time text- " href="">
-                                        <span class="m-0 "></span> 
-                                    </a> 
-                                </div>
-                            </div> 
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="body-title mb-2">
-                            <div class="header-title-text">
-                                <b>Nhân Nhựa</b>
-                            </div>
-                        </div>
-                        <div class="card-body-content">
-                            <div class="body-post">
-                                <div class="body-post-text">
-                                    <%= image.description %>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="body-post-main-wrapp-img"> 
-                        <img class="body-post-main-img" src="data:image/<%=image.image.contentType%>;base64,
-                        <%=image.image.data.toString('base64')%>">
-                    </div>
-                    <div class="card-footer row align-items-center m-0">
-                        <div class="footer-react col-1">
-                            <a href="" class="footer-react-icon prevent-behavior">
-                                <i class="fa-regular fa-heart"></i>
-                            </a>
-                        </div>
-                        <div class="footer-share col-1">
-                            <a href="" class="footer-share-icon prevent-behavior">
-                                <i class="fa-regular fa-share-from-square"></i>
-                            </a>
-                        </div>
-                        <form method="POST" action="/" class="footer-comment d-flex p-0 col">
-                            <div class="flex-fill d-flex align-items-center">
-                                <label style="cursor: pointer; padding-left:12px" class="h-100 d-flex align-items-center" for="comment-inp"><i class="fa-solid fa-magnifying-glass "></i></label>
-                                <input  type="text" name="comment-input" id="comment-inp" class="footer-comment-input">
-                            </div>
-                            <button type="submit" class="btn"><i class="fa-solid fa-paper-plane pe-1"></i></button>
-                        </form>
-                    </div>
-                </div> 
-                <% }) %> 
-                </div>
-                <div class="col-3">
-                    <div class="community">
-                        community
-                    </div>
-                </div>
-        
-            </div>
-        </div> 
       </div>
+    </div>
     <script>
-        document.addEventListener('DOMContentLoaded',() => {   
-            const textPost = $('#description')
-            const submitBtn = $('#modal-submit-btn')
-            if (textPost.val() == false) {
-                submitBtn.addClass('disabled')
-            }
-            textPost.bind('input propertychange',function() { 
-                if ($(this).val() == false) {
-                    submitBtn.addClass('disabled')
-                } else {
-                    submitBtn.removeClass('disabled') 
-                }
-    
-            })
-        })
+      document.addEventListener("DOMContentLoaded", () => {
+        const textPost = $("#description");
+        const submitBtn = $("#modal-submit-btn");
+        if (textPost.val() == false) {
+          submitBtn.addClass("disabled");
+        }
+        textPost.bind("input propertychange", function () {
+          if ($(this).val() == false) {
+            submitBtn.addClass("disabled");
+          } else {
+            submitBtn.removeClass("disabled");
+          }
+        });
+      });
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-   
-</body>
-  
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+      integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </body>
 </html>
