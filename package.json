@@ -40,14 +40,14 @@
     "mongoose": "^6.7.2",
     "mongoose-delete": "^0.5.4",
     "mongoose-sequence": "^5.3.1",
-    "nodemon": "^2.0.20",
-    "mongoose-slug-generator": "^1.0.4"
+    "mongoose-slug-generator": "^1.0.4",
+    "nodemon": "^2.0.20"
   },
   "devDependencies": {
     "husky": "^8.0.2",
     "lint-staged": "^13.0.3",
     "morgan": "^1.10.0",
-    "node-sass": "^8.0.0", 
+    "node-sass": "^8.0.0",
     "prettier": "^2.7.1"
   }
 }
