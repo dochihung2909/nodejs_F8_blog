@@ -33,4 +33,4 @@ Post.plugin(mongooseDelete, {
 
 Post.plugin(AutoIncrement, { inc_field: '_id' })
 
-module.exports = mongoose.model('Course', Post)
+module.exports = mongoose.model('Post', Post)
