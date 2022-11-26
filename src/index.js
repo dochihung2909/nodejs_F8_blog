@@ -53,9 +53,6 @@ app.engine(
 
                 return `<a href="?_sort&column=${field}&type=${type}"><i class="${icon}"></i></a>`
             },
-            toString: (str) => {
-                return Buffer.from(str).toString('base64')
-            },
         },
     }),
 )

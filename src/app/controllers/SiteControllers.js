@@ -4,14 +4,14 @@ const bodyParser = require('body-parser')
 class SiteControllers {
     // [GET] /home
     home(req, res, next) {
-        Post.find({})
-            .then((posts) => {
-                console.log(bodyParser.json(posts))
-                res.render('home.hbs', {
-                    posts: multipleMongooseToObject(posts),
-                })
-            })
-            .catch(next)
+        Post.find({}, (err, items) => {
+            if (err) {
+                console.log(err)
+                res.status(500).send('An error occurred', err)
+            } else {
+                res.render('home.ejs', { items: items })
+            }
+        })
     }
 
     // [GET] /search
