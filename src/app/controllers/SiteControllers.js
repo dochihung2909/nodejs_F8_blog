@@ -1,18 +1,17 @@
-const Course = require('../models/Post')
+const Post = require('../models/Post')
 const { multipleMongooseToObject } = require('../../util/mongoose')
-
+const bodyParser = require('body-parser')
 class SiteControllers {
     // [GET] /home
     home(req, res, next) {
-        Course.find({})
-            .then((courses) => {
-                res.render('home', {
-                    courses: multipleMongooseToObject(courses),
+        Post.find({})
+            .then((posts) => {
+                console.log(bodyParser.json(posts))
+                res.render('home.hbs', {
+                    posts: multipleMongooseToObject(posts),
                 })
             })
             .catch(next)
-
-        // res.render('home')
     }
 
     // [GET] /search

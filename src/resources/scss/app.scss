@@ -19,11 +19,28 @@
 
 .header-user-image {
     background-color: #5fc198;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #ccc;
 }
 
 .header-user-information {
-    width: 30%;
     justify-content: center;
+}
+
+.header-user-time,
+.header-user-name {
+    text-decoration: none;
+}
+
+.header-user-time {
+    font-size: 14px;
+}
+
+.header-user-time:hover,
+.header-user-name:hover {
+    text-decoration: underline;
 }
 
 //card body
@@ -42,15 +59,18 @@
 .footer-comment {
     border: 1px solid #ccc;
     border-radius: 12px;
-    padding-top: 2px;
-    padding-bottom: 2px;
 }
 
 .footer-comment-input {
     border: 0;
     outline: 0;
+    height: 100%;
     flex: 1;
     margin-left: 4px;
     color: #6c757d;
 }
 
+.footer-react,
+.footer-share {
+    font-size: 18px;
+}

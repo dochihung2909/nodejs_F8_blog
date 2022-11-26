@@ -1,13 +1,15 @@
 const newsRouter = require('./news')
 const siteRouter = require('./site')
-const courseRouter = require('./courses')
+const postRouter = require('./post')
 const meRouter = require('./me')
-const loginRouter = require('./login')
+const userRouter = require('./user')
+const uploadRouter = require('./upload')
 
 function route(app) {
-    app.use('/user', loginRouter)
+    // app.use('/upload', uploadRouter)
+    app.use('/user', userRouter)
     app.use('/news', newsRouter)
-    app.use('/courses', courseRouter)
+    app.use('/post', postRouter)
     app.use('/me', meRouter)
     app.use('/', siteRouter)
 }

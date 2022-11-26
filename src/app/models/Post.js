@@ -9,12 +9,14 @@ const Schema = mongoose.Schema
 const Post = new Schema(
     {
         _id: { type: Number },
-        name: { type: String, required: true },
+        name: { type: String, default: 'Admin' },
         description: { type: String, maxLength: 600 },
-        image: { type: String, maxLength: 300 },
-        videoId: { type: String, required: true },
-        level: { type: String },
-        slug: { type: String, slug: 'name', unique: true },
+        image: {
+            data: { type: Buffer },
+            contentType: { type: String },
+        },
+        role: { type: String },
+        slug: { type: String, slug: 'description', unique: true },
         userId: { type: Number },
     },
     {

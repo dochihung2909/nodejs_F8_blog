@@ -14,7 +14,7 @@ class MeControllers {
 
         Promise.all([courseQuery, Course.countDocumentsDeleted()])
             .then(([courses, deletedCount]) =>
-                res.render('me/stored-courses', {
+                res.render('me/stored-posts', {
                     deletedCount,
                     courses: multipleMongooseToObject(courses),
                 }),
@@ -34,7 +34,7 @@ class MeControllers {
 
         courseQuery
             .then((courses) =>
-                res.render('me/trash-courses', {
+                res.render('me/trash-posts', {
                     courses: multipleMongooseToObject(courses),
                 }),
             )
