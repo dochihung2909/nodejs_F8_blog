@@ -1,8 +1,25 @@
 @import 'variables';
 
+// HOme
+
 .user-avatar {
     width: 30px;
     height: 30px;
     border-radius: 50%;
     margin-right: 4px;
+}
+
+.footer-comment {
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+.footer-comment-input {
+    border: 0;
+    outline: 0;
+    flex: 1;
+    margin-left: 4px;
+    color: #6c757d;
 }
