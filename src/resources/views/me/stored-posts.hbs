@@ -1,6 +1,6 @@
 <form name="container-form" method="POST" action="/post/handle-form-actions" class="mt-4">
     <div>
-        <h3>Khoá học của tôi</h3> 
+        <h3>Bài viết của tôi</h3> 
         <a class="me-auto btn btn-dark" href="/me/trash/posts">Thùng rác <span class="">({{deletedCount}})</span></a>  
         <div class="d-flex flex-row mt-3 mb-2 align-items-center">
             
@@ -25,18 +25,14 @@
                     {{{sortable '_id' _sort}}} 
                 </th>
                 <th scope="col">
-                    Tên khoá học 
+                    Tiêu đề bài viết 
                     {{{sortable 'name' _sort}}}
-                </th>
-                <th scope="col">
-                    Trình độ 
-                    {{{sortable 'level' _sort}}}
-                </th>
+                </th> 
                 <th scope="col">
                     Thời gian tạo 
                     {{{sortable 'createdAt' _sort}}}
                 </th>
-                <td colspan="2"></td> 
+                <td colspan="3"></td> 
             </tr>
         </thead>
         <tbody>
@@ -48,8 +44,7 @@
                     </div>
                 </td>
                 <td scope="row">{{this._id}}</td>
-                <td>{{this.name}}</td>
-                <td>{{this.level}}</td>
+                <td>{{this.name}}</td> 
                 <td>{{this.createdAt}}</td> 
                 <td>
                     <a class="btn btn-primary" href="/post/{{this._id}}/edit">Sửa</a>
@@ -61,8 +56,8 @@
             {{else}}
             <tr>
                 <td class="text-center" colspan="5">
-                    <span class="">Bạn chưa đăng khoá học nào.</span>    
-                    <a href="/post/create" class="btn btn-primary">Đăng khoá học</a>
+                    <span class="">Bạn chưa đăng bài viết nào.</span>    
+                    <a href="/post/create" class="btn btn-primary">Đăng bài viết</a>
                 </td> 
             </tr>
             {{/each}}
@@ -75,11 +70,11 @@
     <div class="modal-dialog">
         <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title">Xoá khoá học</h5>
+            <h5 class="modal-title">Xoá Bài viết</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <p>Bạn có chắc muốn xoá khoá học</p>
+            <p>Bạn có chắc muốn xoá Bài viết</p>
         </div>
         <div class="modal-footer">
             <button id="btn-delete-course" type="button" class="btn btn-danger">Xoá</button>

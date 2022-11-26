@@ -42,7 +42,6 @@ class PostControllers {
     // [PUT] /courses/:id
     update(req, res, next) {
         const formData = req.body
-        formData.image = `https://i.ytimg.com/vi/${formData.videoId}/hq720.jpg`
         Course.updateOne({ _id: req.params.id }, formData)
             .then(() => {
                 res.redirect('/me/stored/posts')
@@ -59,7 +58,7 @@ class PostControllers {
             .catch(next)
     }
 
-    // [DELETE] /courses/:id/force
+    // [DELETE] /post/:id/force
     forceDestroy(req, res, next) {
         Course.deleteOne({ _id: req.params.id })
             .then(() => {
@@ -68,7 +67,7 @@ class PostControllers {
             .catch(next)
     }
 
-    // [PATCH] /courses/:id/restore
+    // [PATCH] /post/:id/restore
     restore(req, res, next) {
         Course.restore({ _id: req.params.id })
             .then(() => {
