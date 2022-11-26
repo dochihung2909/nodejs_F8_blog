@@ -1,12 +1,42 @@
 @import 'variables';
 
 // HOme
+.card {
+    position: relative;
+}
 
+//card header
 .user-avatar {
     width: 30px;
     height: 30px;
     border-radius: 50%;
     margin-right: 4px;
+}
+
+.header-user-link {
+    width: 10%;
+}
+
+.header-user-image {
+    background-color: #5fc198;
+}
+
+.header-user-information {
+    width: 30%;
+    justify-content: center;
+}
+
+//card body
+.body-post-main-wrapp-img,
+.body-post-main-img {
+    width: 100%;
+}
+
+//card footer
+.card-footer {
+    // position: absolute;
+    // overflow: hidden;
+    margin: 0 12px;
 }
 
 .footer-comment {
@@ -23,3 +53,4 @@
     margin-left: 4px;
     color: #6c757d;
 }
+
