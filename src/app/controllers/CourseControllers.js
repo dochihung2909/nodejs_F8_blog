@@ -1,4 +1,4 @@
-const Course = require('../models/Course')
+const Course = require('../models/Post')
 const { mongooseToObject } = require('../../util/mongoose')
 
 class CourseControllers {

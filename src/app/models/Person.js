@@ -6,15 +6,11 @@ const AutoIncrement = require('mongoose-sequence')(mongoose)
 
 const Schema = mongoose.Schema
 
-const Course = new Schema(
+const Person = new Schema(
     {
         _id: { type: Number },
         name: { type: String, required: true },
-        description: { type: String, maxLength: 600 },
-        image: { type: String, maxLength: 300 },
-        videoId: { type: String, required: true },
-        level: { type: String },
-        slug: { type: String, slug: 'name', unique: true },
+        role: { type: Boolean },
     },
     {
         _id: false,
@@ -25,11 +21,11 @@ const Course = new Schema(
 // Add plugin
 mongoose.plugin(slug)
 
-Course.plugin(mongooseDelete, {
+Person.plugin(mongooseDelete, {
     overrideMethods: 'all',
     deletedAt: true,
 })
 
-Course.plugin(AutoIncrement, { inc_field: '_id' })
+Person.plugin(AutoIncrement, { inc_field: '_id' })
 
-module.exports = mongoose.model('Course', Course)
+module.exports = mongoose.model('Person', Person)
